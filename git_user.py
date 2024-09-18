@@ -14,6 +14,19 @@ def get_user_activity(username):
         return response.json()
     else:
         return None
+    
+def dispaly_activity(data):
+    for event in data:
+        match event["type"]:
+            case "PushEvent":
+                print(f"Pushed {event['payload']['size']} {'commit' if event['payload']['size'] == 1 else 'commits'} to {event['repo']['name']}")
+            case "IssuesEvent":
+                print(f"Opened an issue for {event['repo']['name']}")
+            case "WatchEvent":
+                print(f"Starred {event['repo']['name']}")
+            case default:
+                print(f"Performed {event['type']} on {event['repo']['name']}")
+
+
 data = get_user_activity(username)
-print(type(data))
-print(json.dumps(data[0], indent=4))
+dispaly_activity(data)
