@@ -27,6 +27,9 @@ def dispaly_activity(data):
             case default:
                 print(f"Performed {event['type']} on {event['repo']['name']}")
 
+def main():
+    data = get_user_activity(username)
+    dispaly_activity(data)
 
-data = get_user_activity(username)
-dispaly_activity(data)
+if __name__ == "__main__":
+    main()
