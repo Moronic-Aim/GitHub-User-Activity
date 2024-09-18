@@ -1,6 +1,6 @@
 import argparse
 import requests
-import json
+
 parse = argparse.ArgumentParser()
 parse.add_argument("username", help="Enter the username")
 args = parse.parse_args()
